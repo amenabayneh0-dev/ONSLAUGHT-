@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; background: #050505; }
+  body {
+    @apply bg-ons-black font-sans text-ons-white antialiased;
+  }
+  :focus-visible {
+    outline: 2px solid #C0C0C0;
+    outline-offset: 3px;
+  }
+  ::selection { background: #C0C0C0; color: #050505; }
+}
+
+@layer components {
+  /* Brushed-metal gradient for large type */
+  .silver-text {
+    background-image: linear-gradient(
+      100deg, #6f6f6f 0%, #c0c0c0 28%, #ffffff 42%, #c0c0c0 56%, #8a8a8a 78%, #d9d9d9 100%
+    );
+    background-size: 260% 100%;
+    background-position: 0% 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .silver-text-sheen { animation: sheen 2.6s cubic-bezier(.22,.7,.2,1) 1.2s both; }
+
+  /* Metallic surface for the primary button */
+  .silver-surface {
+    background-image: linear-gradient(135deg, #e9e9e9 0%, #c0c0c0 38%, #8f8f8f 62%, #cfcfcf 100%);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.65), inset 0 -1px 0 rgba(0,0,0,.25), 0 8px 24px -10px rgba(192,192,192,.35);
+  }
+}
+
+@keyframes sheen {
+  from { background-position: 130% 0; }
+  to   { background-position: 0% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .silver-text-sheen { animation: none; }
+}
+
+@layer components {
+  /* Subtle section textures */
+  .texture-diagonal { background-image: repeating-linear-gradient(135deg, rgba(192,192,192,.05) 0 1px, transparent 1px 14px); }
+  .texture-glow { background-image: radial-gradient(ellipse 60% 50% at 12% 0%, rgba(192,192,192,.12), transparent 70%); }
+  .outline-text { -webkit-text-stroke: 1px rgba(192,192,192,.16); color: transparent; }
+}
+
+@layer components {
+  /* Vertical silver gradient: keeps big numerals bright and readable */
+  .silver-text-bright {
+    background-image: linear-gradient(180deg, #ffffff 0%, #dcdcdc 45%, #8f8f8f 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
